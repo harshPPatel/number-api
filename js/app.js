@@ -1,8 +1,5 @@
-// var API_URL = 'http://numbersapi.com/number/type';
-// Variables
-
 // API's base URL
-var API_BASE_URL = 'http://numbersapi.com';
+var API_BASE_URL = 'https://cors-anywhere.herokuapp.com/http://numbersapi.com';
 
 // API's Request Type (Possible values : trivia, math, date, or year)
 var API_REQUEST_TYPE;
@@ -75,7 +72,7 @@ function validateInput() {
 /**
  * Makes request to numbersapi.com and fetch the result from it.
  */
-function fetchResult() {
+async function fetchResult() {
   // Generating random request types
   API_REQUEST_TYPE = getRequestType();
 
@@ -93,22 +90,17 @@ function fetchResult() {
     // Creating Url fro api request
     var API_URL = `${API_BASE_URL}/${inputNumber}/${API_REQUEST_TYPE}`;
 
-    // Creating differnt XMLHttpRequest objects according to the browsers
-    if (window.XMLHttpRequest) {
-      // For modern browsers
-      http = new XMLHttpRequest();
-    } else {
-      // For old IE browsers
-      http = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-
-    // making http request to numbersapi.com
-    http.open('GET', API_URL);
-    // Changing input of output element with api's response
-    http.onload = function() {
-        outputElement.textContent = this.response;
-      }
-    http.send();
+    // Fetching data from the API
+    await fetch(API_URL)
+      .then(function(res) {
+        return res.text()
+          .then(function(text) {
+            outputElement.textContent = text;
+          })
+      })
+      .catch(function() {
+        outputElement.textContent = '500 - Internal Server Error!';
+      });
   }
 }
 
