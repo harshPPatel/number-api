@@ -1,37 +1,35 @@
-## Welcome to GitHub Pages
+# Number API
 
-You can use the [editor on GitHub](https://github.com/harshPPatel/number-api/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+A fun project designed and created to work around with the **Number API**. Learned to make a AJAX call to the website, parse the data and show them in the DOM. Learned to use open source tools to turn HTTP calls to HTTPS calls to make it work in the website.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+**Live Website** : [https://number-api.now.sh/](https://number-api.now.sh/)
 
-### Markdown
+## Getting Started
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+This are the instruction to start with this repository. Download or Clone this repository to your computer, and follow this instructions to set up the project on your local machine with the development mode of this project.
 
-```markdown
-Syntax highlighted code block
+### Required
 
-# Header 1
-## Header 2
-### Header 3
+This is the list of required software/technologies to run for further instructions.
 
-- Bulleted
-- List
+- Browser
+- Code Editor
 
-1. Numbered
-2. List
+### Deployment
 
-**Bold** and _Italic_ and `Code` text
+**Note:** This app does not uses any tools to produce the production version. You can use any tools you prefer. If you do not want to use any other tools, just upload the final files to the server
 
-[Link](url) and ![Image](src)
-```
+## Built With
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+The following Framework/Technologies are used in this project's development.
 
-### Jekyll Themes
+- Number API - [http://numbersapi.com](http://numbersapi.com/)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/harshPPatel/number-api/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Vendors
 
-### Support or Contact
+This is the list of third party assets and code used in the development process.
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- cors-anywhere-herokuapp - [https://cors-anywhere.herokuapp.com/](https://cors-anywhere.herokuapp.com/)
+    - This tool is used to convert http call to https call
+
+**Author** : [Harsh P Patel](https://github.com/harshPPatel)
