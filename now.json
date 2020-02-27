@@ -1,5 +1,11 @@
 {
   "name": "number-api",
   "version": 2,
+  "builds": [
+    {
+      "src": "**",
+      "use": "@now/static"
+    }
+  ],
   "alias": ["number-api.now.sh"]
 }
