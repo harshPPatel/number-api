@@ -7,6 +7,9 @@ import * as functions from 'firebase-functions';
 //   functions.logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
+import * as cors from 'cors';
+const CORS = cors({ origin: ['https://number-api.harshpatel.info'] });
+// const cors = require('cors')({ origin: true });
 
 const API_BASE_URL = 'http://numbersapi.com';
 
@@ -36,8 +39,8 @@ function validateInput(value: number) {
   return value > 0 && value < 10000;
 }
 
-export const numberApi = functions.https.onRequest(
-  async (request, response) => {
+export const numberApi = functions.https.onRequest((request, response) => {
+  CORS(request, response, async () => {
     const API_REQUEST_TYPE = getRequestType();
     const inputNumber = request.body.number;
 
@@ -64,5 +67,5 @@ export const numberApi = functions.https.onRequest(
         .status(400)
         .send('Please enter valid number between 0 and 10000!');
     }
-  }
-);
+  });
+});
