@@ -1,4 +1,5 @@
 import * as functions from 'firebase-functions';
+import axios from 'axios';
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -8,7 +9,7 @@ import * as functions from 'firebase-functions';
 //   response.send("Hello from Firebase!");
 // });
 import * as cors from 'cors';
-const CORS = cors({ origin: ['https://number-api.harshpatel.info'] });
+const CORS = cors();
 // const cors = require('cors')({ origin: true });
 
 const API_BASE_URL = 'http://numbersapi.com';
@@ -36,6 +37,7 @@ function getRequestType() {
 }
 
 function validateInput(value: number) {
+  console.log(value);
   return value > 0 && value < 10000;
 }
 
@@ -49,15 +51,16 @@ export const numberApi = functions.https.onRequest((request, response) => {
       // Creating Url fro api request
       const API_URL = `${API_BASE_URL}/${inputNumber}/${API_REQUEST_TYPE}`;
       // Fetching data from the API
-      await fetch(API_URL)
+      await axios
+        .get(API_URL)
         .then(function (res) {
           if (res.status !== 200) {
             throw new Error('500 - Internal Server Error!');
           }
-          return res.text();
+          return res.data;
         })
         .then(function (data) {
-          response.send(data);
+          return response.send(data);
         })
         .catch(function () {
           response.status(500).send('500 - Internal Server Error!');
