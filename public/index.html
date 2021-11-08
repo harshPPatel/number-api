@@ -134,9 +134,10 @@
       };
 
       // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
+      window.app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
-      const functions = getFunctions(app);
+      window.functions = getFunctions(app);
+      window.httpsCallable = httpsCallable;
     </script>
     <!-- Scripts -->
     <script src="./js/app.js"></script>

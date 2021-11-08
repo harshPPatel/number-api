@@ -25,7 +25,7 @@ async function fetchResult() {
     loadingElement.style.display = 'inline-block';
     outputElement.textContent = '';
 
-    const addMessage = httpsCallable(functions, 'numberApi');
+    const addMessage = window.httpsCallable(window.functions, 'numberApi');
     addMessage({ number: inputNumber })
       .then((result) => {
         const data = result.data;
