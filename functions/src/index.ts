@@ -42,7 +42,7 @@ function validateInput(value: number) {
 export const numberApi = functions.https.onRequest((request, response) => {
   CORS(request, response, async () => {
     const API_REQUEST_TYPE = getRequestType();
-    const inputNumber = request.body.number;
+    const inputNumber = request.body.data.number;
 
     // Checking if input is valid.
     if (validateInput(Number(inputNumber))) {
