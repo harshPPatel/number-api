@@ -8,11 +8,11 @@ import * as functions from 'firebase-functions';
 //   response.send("Hello from Firebase!");
 // });
 
-var API_BASE_URL = 'http://numbersapi.com';
+const API_BASE_URL = 'http://numbersapi.com';
 
 function getRequestType() {
-  var returnType;
-  var randomNumber = Math.floor(Math.random() * 4);
+  let returnType;
+  const randomNumber = Math.floor(Math.random() * 4);
   // converting random number to return types
   switch (randomNumber) {
     case 0:
@@ -44,7 +44,7 @@ export const numberApi = functions.https.onRequest(
     // Checking if input is valid.
     if (validateInput(Number(inputNumber))) {
       // Creating Url fro api request
-      var API_URL = `${API_BASE_URL}/${inputNumber}/${API_REQUEST_TYPE}`;
+      const API_URL = `${API_BASE_URL}/${inputNumber}/${API_REQUEST_TYPE}`;
       // Fetching data from the API
       await fetch(API_URL)
         .then(function (res) {
