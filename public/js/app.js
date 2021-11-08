@@ -25,11 +25,16 @@ async function fetchResult() {
     loadingElement.style.display = 'inline-block';
     outputElement.textContent = '';
 
-    const addMessage = window.httpsCallable(window.functions, 'numberApi');
-    addMessage({ number: inputNumber })
-      .then((result) => {
-        console.log(result);
-        const data = result.data;
+    await fetch(
+      'https://us-central1-number-api-e04c9.cloudfunctions.net/numberApi'
+    )
+      .then((res) => {
+        if (res.status !== 200) {
+          throw new Error(res.statusText);
+        }
+        return res.text();
+      })
+      .then((data) => {
         outputElement.textContent = data;
         errorElement.style.display = 'none';
       })
